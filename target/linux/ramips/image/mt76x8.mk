@@ -653,6 +653,21 @@ define Device/tplink_tl-wr841n-v13
 endef
 TARGET_DEVICES += tplink_tl-wr841n-v13
 
+define Device/tplink_tl-wr845n-v4
+  $(Device/tplink-v2)
+  IMAGE_SIZE := 7808k
+  DEVICE_MODEL := TL-WR845N
+  DEVICE_VARIANT := v4
+  TPLINK_FLASHLAYOUT := 8Mmtk
+  TPLINK_HWID := 0x08450004
+  TPLINK_HWREV := 0x1
+  TPLINK_HWREVADD := 0x4
+  IMAGES := sysupgrade.bin tftp-recovery.bin
+  IMAGE/tftp-recovery.bin := pad-extra 128k | $$(IMAGE/factory.bin)
+  SUPPORTED_DEVICES += tl-wr845n-v4
+endef
+TARGET_DEVICES += tplink_tl-wr845n-v4
+
 define Device/tplink_tl-wr841n-v14
   $(Device/tplink-v2)
   IMAGE_SIZE := 3968k
